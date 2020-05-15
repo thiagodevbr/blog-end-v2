@@ -6,3 +6,7 @@ temp/
 
 tmp/*
 !tmp/.gitkeep
+
+/*.js'
+dist
+ormconfig.json
