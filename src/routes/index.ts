@@ -1,9 +1,8 @@
 import { Router } from 'express';
+import About from './about.routes';
 
 const routes = Router();
 
-routes.get('/', (request, response) =>
-  response.json({ message: 'start blog' }),
-);
+routes.use('/about', About);
 
 export default routes;
