@@ -10,6 +10,7 @@ interface Request {
 class CreateAboutService {
   public async execute({ title, description }: Request): Promise<About> {
     const aboutRepository = getCustomRepository(AboutRepository);
+    // Before create, I'll delete the previous data
     await aboutRepository.findAboutBefore();
     const about = aboutRepository.create({
       title,

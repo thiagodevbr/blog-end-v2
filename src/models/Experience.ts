@@ -4,10 +4,14 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
+  JoinColumn,
 } from 'typeorm';
 
-@Entity('about')
-class About {
+import Resume from './Resume';
+
+@Entity('experience_resume')
+class Experience {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -15,7 +19,17 @@ class About {
   title: string;
 
   @Column()
+  time: string;
+
+  @Column()
   description: string;
+
+  @Column()
+  resume_id: string;
+
+  @ManyToOne(() => Resume)
+  @JoinColumn({ name: 'resume_id' })
+  resume: Resume;
 
   @CreateDateColumn()
   created_at: Date;
@@ -24,4 +38,4 @@ class About {
   updated_at: Date;
 }
 
-export default About;
+export default Experience;
